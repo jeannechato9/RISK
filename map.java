@@ -19,22 +19,37 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class map extends BasicGameState {
 	
+	public map(MainScreenGameState menu) {
+		
+		this.menu=menu;
+	}
+	
+	
 	public static final int ID = 2;
 	private GameContainer container;
 	private Image image;
 	private int posMouseY;
 	private int posMouseX;
-	private boolean clic_gauche=false;
+	private int nbre_joueurs;
 	public String mouse;
-	private StateBasedGame game;
-	private map map;
-	private int nbre_joueurs=6;
+	private map map;			//menu.getNbre_joueurs()
 	private Territoire territoire=new Territoire();
-	private Initialisation initialisation= new Initialisation(map, nbre_joueurs);
+	private Initialisation initialisation;
+	MainScreenGameState menu;
+	private Armee armee=new Armee(menu, nbre_joueurs);
 
-	private Armee armee= new Armee(map);
+	 Boolean une_fois=true;
 	
+	
+	@Override
+	public void init(GameContainer container, StateBasedGame game) throws SlickException {
+		
+		this.container = container;
+		this.territoire.init(container);
 
+		
+	}
+	
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		
@@ -50,33 +65,43 @@ public class map extends BasicGameState {
 		g.drawString(mouse, 50, 50);
 		this.image = new Image("titre.png");
 		g.drawImage( this.image, 600, 0);
-
+		
+		
         this.armee.render(container, g);
-        this.initialisation.render(container, g);
 
 		this.territoire.render(container, g);
-		this.armee.render(container, g);
+		int a=3;
+		update(container, game, a);
+		
 		
 		
 
-	}
-
-	
-	@Override
-	public void init(GameContainer container, StateBasedGame game) throws SlickException {
-		this.container = container;
-
-		this.initialisation.init();
-		this.territoire.init(container);
-		this.armee.init(container);
-		
 	}
 
 	@Override
 	public void update(GameContainer arg0, StateBasedGame game, int arg1) throws SlickException {
-		this.initialisation.update();
+		this.menu.update(arg0, game, arg1);
+		nbre_joueurs=menu.getNbre_joueurs();
+		if(une_fois) {
+		initialisation= new Initialisation(menu, nbre_joueurs);
+		
+		this.initialisation.init();
+
+		}
+		if(une_fois) {
+			armee=new Armee(menu, nbre_joueurs);
+			this.armee.init(container);
+
+			}
+		
+			
+		
+		
+		une_fois=false;
+		
+
 		this.territoire.update(container);
-		this.armee.update(container);
+		this.initialisation.update();
 	}
 	
 	
@@ -92,5 +117,12 @@ public class map extends BasicGameState {
 	public int getID() {
 	    return ID;
 	  }
-
+	
+	public void setnbre_joueurs(int nbre_joueurs) {
+		this.nbre_joueurs=nbre_joueurs;
+	}
+	
+	public int getnbre_joueurs() {
+		return nbre_joueurs;
+	}
 }

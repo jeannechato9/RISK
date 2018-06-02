@@ -31,6 +31,7 @@ class MainScreenGameState extends BasicGameState implements ComponentListener {
 	  private MouseOverArea Button_6;
 	  private int nbre_joueurs;
 	
+	
 
 
 
@@ -78,15 +79,16 @@ class MainScreenGameState extends BasicGameState implements ComponentListener {
 			Button_6.render(container, g);
 			g.drawString("6", Button_6.getX()+13, Button_6.getY() + 3);
 			
+			if (container.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON) && posMouseX<820 && posMouseX>620 && posMouseY<340 && posMouseY>300&&nbre_joueurs!=0) {
+				game.enterState(map.ID,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
+			}
+			
 			
 
 		}
 
 	  @Override
 	  public void update(GameContainer a, StateBasedGame game, int delta) throws SlickException {
-		  if (container.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON) && posMouseX<820 && posMouseX>620 && posMouseY<340 && posMouseY>300) {
-				game.enterState(map.ID,new FadeOutTransition(Color.black), new FadeInTransition(Color.black));
-			}
 		  
 	  }
 
@@ -97,29 +99,24 @@ class MainScreenGameState extends BasicGameState implements ComponentListener {
 	    } 
 	    if (source == Button_3) {
 	    	nbre_joueurs=3;
-	    	System.out.println(getNbre_joueurs());
 	    } 
 	    if (source == Button_4) {
-	    	nbre_joueurs=4;			
+	    	nbre_joueurs=4;		
 	    } 
 	    if (source == Button_5) {
-	    	nbre_joueurs=5;			
+	    	nbre_joueurs=5;		
 	    } 
-	    else if (source == Button_6) {
-	    	nbre_joueurs=6;				
+	    else if (source == Button_6){
+	    	nbre_joueurs=6;			
 	    } 
 	  }
+	  
+	  
 	  
 	  public int getNbre_joueurs()
       {
         return nbre_joueurs;
       } 
-	  
-	  public void setNbre_joueurs(int nbre_joueurs)
-      {
-        this.nbre_joueurs = nbre_joueurs;
-      }
-	  
 	  public int getID() {
 		    return ID;
 		  }
