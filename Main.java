@@ -9,8 +9,9 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
 public class Main {
-
+			
 	public static void main(String[] args) throws SlickException {
+		
         new AppGameContainer(new StateGame(), 1450, 950, false).start();
     }
 

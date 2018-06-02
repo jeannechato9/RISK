@@ -13,32 +13,19 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 class StateGame extends StateBasedGame {
-
 	private GameContainer container;
+	MainScreenGameState menu=new MainScreenGameState();
+	
 	
 	public StateGame() {
 	    super("RISK");
 	    
 	  }
-	  
-	  
-	  public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-		  
-	  }
-	  
-	  public void init(GameContainer container, StateBasedGame game) throws SlickException {
-		  this.container = container;
-	  }
-	  
-	  public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-	  }
- 
-	  @Override
+	
 	  public void initStatesList(GameContainer container) throws SlickException {
-		  	addState(new MainScreenGameState());
-		  	addState(new map()); 
+			addState(menu);
+		  	addState(new map(menu)); 
 		  }
 	  
-
 	
 	}
