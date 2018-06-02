@@ -55,7 +55,6 @@ public class Armee {
 	
 	int [] Armee_posees_joueur1_2=new int[19];
 	int [] Armee_posees_joueur2_2=new int[19];
-	 private Initialisation initialisatio=new Initialisation(menu, 5);
 	 
 	
 	
@@ -117,6 +116,8 @@ public Armee(MainScreenGameState menu, int nbre_joueurs) {
 	700, 600, 615, 530,
 	350, 395, 445, 305, 395, 265, 423, 350, 470, 250, 280, 264
 	};
+
+	 private Initialisation initialisatio=new Initialisation(menu, 6);
 	
 	
 	
@@ -134,7 +135,9 @@ public Armee(MainScreenGameState menu, int nbre_joueurs) {
 	  
 	  public void init(GameContainer container) throws SlickException {
 		  System.out.println(nbre_joueurs);
+		  initialisatio=new Initialisation(menu, nbre_joueurs);
 		  this.initialisatio.init();
+		  
 		  if(nbre_joueurs==6) {
 			  
 		  territoirejoueur1_2= initialisatio.getTerritoirejoueur1();
@@ -588,8 +591,8 @@ public  int affichage_1(Graphics g, int a,int i, GameContainer container, int []
 		}
 		
 		g.setColor(Color.black);
-	   g.drawString("Joueur 1 placez vos armées sur vos territoires", 500, 140);
-	   g.drawString("Il vous reste "+a+" armées à placer", 555, 155);
+	   g.drawString("Joueur 1 placez vos armÃ©es sur vos territoires", 500, 140);
+	   g.drawString("Il vous reste "+a+" armÃ©es Ã  placer", 555, 155);
 	   
 	   return a;
 	}
@@ -642,8 +645,8 @@ public  int affichage_2(Graphics g, int a,int b, GameContainer container, int []
 		  }
 			}
 		}
-		  g.drawString("Joueur 2 placez vos armées sur vos territoires", 500, 140);
-		   g.drawString("Il vous reste "+b+" armées à placer", 555, 155);
+		  g.drawString("Joueur 2 placez vos armÃ©es sur vos territoires", 500, 140);
+		   g.drawString("Il vous reste "+b+" armÃ©es Ã  placer", 555, 155);
 		   return b;
 	  }
 	else{
@@ -692,8 +695,8 @@ public  int affichage_3(Graphics g, int a,int b,int c, GameContainer container, 
 			}
 		}
 
-		  g.drawString("Joueur 3 placez vos armées sur vos territoires", 500, 140);
-		   g.drawString("Il vous reste "+c+" armées à placer", 555, 155);
+		  g.drawString("Joueur 3 placez vos armÃ©es sur vos territoires", 500, 140);
+		   g.drawString("Il vous reste "+c+" armÃ©es Ã  placer", 555, 155);
 		   return c;
 	  }
 	else{
@@ -722,8 +725,8 @@ public  int affichage_3(Graphics g, int a,int b,int c, GameContainer container, 
 				}
 			}
 
-			  g.drawString("Joueur 4 placez vos armées sur vos territoires", 500, 140);
-			   g.drawString("Il vous reste "+d+" armées à placer", 555, 155);
+			  g.drawString("Joueur 4 placez vos armÃ©es sur vos territoires", 500, 140);
+			   g.drawString("Il vous reste "+d+" armÃ©es Ã  placer", 555, 155);
 			   return d;
 		  }
 		else{
@@ -750,8 +753,8 @@ public  int affichage_3(Graphics g, int a,int b,int c, GameContainer container, 
 					}
 				}
 
-				  g.drawString("Joueur 5 placez vos armées sur vos territoires", 500, 140);
-				   g.drawString("Il vous reste "+e+" armées à placer", 555, 155);
+				  g.drawString("Joueur 5 placez vos armÃ©es sur vos territoires", 500, 140);
+				   g.drawString("Il vous reste "+e+" armÃ©es Ã  placer", 555, 155);
 				   return e;
 			  }
 			else{
@@ -779,8 +782,8 @@ public  int affichage_3(Graphics g, int a,int b,int c, GameContainer container, 
 					}
 				}
 
-				  g.drawString("Joueur 6 placez vos armées sur vos territoires", 500, 140);
-				   g.drawString("Il vous reste "+f+" armées à placer", 555, 155);
+				  g.drawString("Joueur 6 placez vos armÃ©es sur vos territoires", 500, 140);
+				   g.drawString("Il vous reste "+f+" armÃ©es Ã  placer", 555, 155);
 				   return f;
 			  }
 			else{
@@ -794,14 +797,3 @@ public  int affichage_3(Graphics g, int a,int b,int c, GameContainer container, 
 
 }
 	
-
-
-	
-	 
-	 
-
-
-
-
-
-
